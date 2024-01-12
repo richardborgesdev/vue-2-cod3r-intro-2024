@@ -1,0 +1,14 @@
+{
+  "name": "vue-cod3r-cli",
+  "description": "description",
+  "authors": "author",
+  "version": "1.0.0",
+  "main": "pathToMain",
+  "license": "UNLICENSED",
+  "scripts": {
+    "vue-create": "vue create "
+  },
+  "dependencies": {
+    "@vue/cli": "^5.0.8"
+  }
+}
