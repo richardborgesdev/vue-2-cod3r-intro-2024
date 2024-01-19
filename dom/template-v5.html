@@ -1,7 +1,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
 
 <div id="app">
-  <p>{{ title }}</p>
+  <p v-once>{{ title }}</p>
   <p>{{ hello() }}</p>
   <!-- documente.querySelector('[c3r-bind]').getAttribute('c3r-bind') -->
   <a c3r-bind="abc"></a> 
@@ -17,7 +17,8 @@
     },
     methods: {
       hello() {
-        console.log(this);
+        this.titulo = 'Bom dia!!!';
+
         return this.title;
       },
     }
