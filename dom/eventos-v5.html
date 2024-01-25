@@ -1,0 +1,44 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+
+<div id="app">
+  <p>
+    {{ count }}
+  </p>
+  <button @click="sum(5, $event)">
+    Somar 1
+  </button>
+  <p @mousemove="updateXY">
+    Mouse: {{ x }} and {{ y }}
+    <span @mousemove.stop>
+      STOP MOUSE MOVE HERE!!
+    </span>
+  </p>
+  <a href="http://google.com" @click.prevent>google</a>
+  <hr>
+  <input type="text" @keyup.enter="showAlert">
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      count: 0,
+      x: 0,
+      y: 0,
+    },
+    methods: {
+      sum(value, event) {
+        console.log(event);
+        this.count+= value;
+      },
+      updateXY(event) {
+        console.log(event);
+        this.x = event.clientX;
+        this.y = event.clientY;
+      },
+      showAlert() {
+        alert('alert');
+      },
+    }
+  });
+</script>
