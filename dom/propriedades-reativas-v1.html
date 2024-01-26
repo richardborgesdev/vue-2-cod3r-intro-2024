@@ -1,0 +1,17 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+
+<div id="app">
+  <p>
+    {{ title }}
+  </p>
+  <input type="text" v-model="title"/>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      title: 'Usando VueJs!',
+    },
+  });
+</script>
