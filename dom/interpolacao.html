@@ -1,0 +1,30 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+
+<div id="app">
+  <p>
+    {{ count }}
+  </p>
+  <p>
+    {{ count * 2}}
+  </p>
+  <p>
+    {{ count > 10 ? 'Maior do que 10' : 'Menor do que 10' }}
+  </p>
+  <button @click="sum(1, $event)">
+    Somar 1
+  </button>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      count: 0,
+    },
+    methods: {
+      sum(value, event) {
+        this.count+= value;
+      },
+    }
+  });
+</script>
