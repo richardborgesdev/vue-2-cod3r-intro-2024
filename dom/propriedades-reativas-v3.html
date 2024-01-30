@@ -1,0 +1,60 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+
+<div id="app">
+  <button @click="increase">
+    Increase
+  </button>
+  <button @click="count2++">
+    Increase2
+  </button>
+  <button @click="decrease">
+    Decrease
+  </button>
+  <p>
+    Count: {{ count }} {{ count2 }}
+  </p>
+  <p>
+    Result: {{ showResult }}
+  </p>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      count: 0,
+      count2: 0,
+    },
+    computed: {
+      showResult() {
+        console.log('show result by computed');
+        return this.count >= 5
+        ? 'Maior ou igual a 5'
+        : 'Menor que 5';
+      }
+    },
+    watch: {
+      count(value, old) {
+        console.log(value, old);
+
+        setTimeout(() => {
+          this.count = 0;
+        }, 2000);
+      },
+    },
+    methods: {
+      increase() {
+        this.count++;
+      },
+      decrease() {
+        this.count--;
+      },
+      // showResult() {
+      //   console.log('show result by method');
+      //   return this.count >= 5
+      //   ? 'Maior ou igual a 5'
+      //   : 'Menor que 5';
+      // }
+    }
+  });
+</script>
