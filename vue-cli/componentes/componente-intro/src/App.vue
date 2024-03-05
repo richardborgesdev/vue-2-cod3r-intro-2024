@@ -1,10 +1,7 @@
 <template>
   <div>
-    <h1>
-      Contadores
-    </h1>
-    <contador-comp />
-    <contador-comp />
+    <contadores-comp />
+    <button>?</button>
   </div>
 </template>
 
