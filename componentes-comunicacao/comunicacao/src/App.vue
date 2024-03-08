@@ -35,5 +35,4 @@ button {
 	border-radius: 4px;
 	margin: 10px;
 }
-</style>./components/UsuarioPage.vue
-./components/Usuario.vue
+</style>
