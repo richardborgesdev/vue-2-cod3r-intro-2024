@@ -9,18 +9,35 @@
             {{ inverterNome() }}
           </strong>
         </p>
+        <button @click="reiniciarNome">Reiniciar Nome</button>
     </div>
 </template>
 
 <script>
 export default {
   props: {
-    usuarioNome: String,
+    usuarioNome: {
+      type: String,
+      // required: true,
+      default: 'Anônimo',
+      // default: () => {
+      //   return Array(10).fill(0).join(',');
+      // }
+    },
   },
   methods: {
     inverterNome() {
       return this.usuarioNome.split('').reverse().join('');
     },
+    reiniciarNome() {
+      this.$emit(
+        'nomeMudou', 
+        { 
+          noveo: 'Pedro', 
+          antigo: this.usuarioNome,
+        },
+      );
+    }
   }
 }
 </script>
