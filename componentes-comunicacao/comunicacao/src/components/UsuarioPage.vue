@@ -8,7 +8,11 @@
         </button>
         <hr>
         <div class="componentes">
-            <app-usuario-info :usuario-nome="nome" @nomeMudou="nome = $event.novo"/>
+            <app-usuario-info 
+              :usuario-nome="nome" 
+              @nomeMudou="nome = $event.novo" 
+              :reiniciarFn="reiniciarNome"
+              />
             <app-usuario-editar />
         </div>
     </div>
@@ -29,6 +33,9 @@ export default {
       alterarNome() {
         this.nome = 'Ana';
       },
+      reiniciarNome() {
+        this.nome = 'Pedro';
+      }
     }
 }
 </script>

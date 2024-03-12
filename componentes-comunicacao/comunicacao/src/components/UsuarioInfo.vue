@@ -10,6 +10,8 @@
           </strong>
         </p>
         <button @click="reiniciarNome">Reiniciar Nome</button>
+        <button @click="reiniciarFn">Reiniciar Nome (callback)</button>
+
     </div>
 </template>
 
@@ -24,6 +26,9 @@ export default {
       //   return Array(10).fill(0).join(',');
       // }
     },
+    reiniciarFn: {
+      type: Function,
+    }
   },
   methods: {
     inverterNome() {
