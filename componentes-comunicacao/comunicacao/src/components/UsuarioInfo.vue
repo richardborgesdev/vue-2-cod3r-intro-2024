@@ -54,7 +54,7 @@ export default {
     }
   },
   create() {
-    barramento.$on('idadeMudou', idade => {
+    barramento.quandoIdadeMudar(idade => {
       // this.idade = idade;
       console.log('>>>', idade);
     });
