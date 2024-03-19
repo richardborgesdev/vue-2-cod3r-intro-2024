@@ -1,16 +1,17 @@
 <template>
     <div class="citacao">
-        {{ text }}
+      <slot name="texto"></slot>
+      <slot name="fonte"></slot>
+
+      <div class="autor">
+        <slot name="autor"></slot>
+      </div>
     </div>
 </template>
 
 <script>
 export default {
-  props: {
-    text: {
-      type: String,
-    }
-  }
+
 }
 </script>
 
@@ -20,5 +21,13 @@ export default {
         background-color: rgba(0, 0, 0, .1);
         padding: 25px;
         max-width: 450px;
+    }
+
+    h1 {
+      color: red !important;
+    }
+
+    .autor {
+      float: right;
     }
 </style>
