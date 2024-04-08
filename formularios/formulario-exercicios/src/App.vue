@@ -14,7 +14,9 @@
           <input type="number" v-model.number="usuario.idade">
         </Rotulo>
         <Rotulo nome="Mensagem">
-          <textarea name="" cols="30" rows="5"></textarea>
+          <textarea name="" cols="30" rows="5" v-model="mensagem">
+            teste
+          </textarea>
         </Rotulo>
         <Rotulo nome="Características do Problema">
           <span class="mr-4"><input type="checkbox" value="reproduzivel"> Reproduzível</span>
@@ -54,7 +56,9 @@
           </span>
         </Rotulo>
         <Rotulo nome="Mensagem">
-          <span>???</span>
+          <span style="white-space: pre;">
+            {{ mensagem }}
+          </span>
         </Rotulo>
         <Rotulo nome="Marque as Opções">
           <span>???</span>
@@ -86,7 +90,8 @@ export default {
         email: '',
         senha: '',
         idade: 25,
-      }
+      },
+      mensagem: '',
     }
   },
   computed: {
