@@ -19,17 +19,35 @@
           </textarea>
         </Rotulo>
         <Rotulo nome="Características do Problema">
-          <span class="mr-4"><input type="checkbox" value="reproduzivel"> Reproduzível</span>
-          <span><input type="checkbox" value="intermitente"> Intermitente</span>
+          <span class="mr-4">
+            <input type="checkbox" value="reproduzivel" v-model="caracteristicas"> 
+            Reproduzível
+          </span>
+          <span>
+            <input type="checkbox" value="intermitente" v-model="caracteristicas"> 
+            Intermitente
+          </span>
         </Rotulo>
         <Rotulo nome="Qual produto?">
-          <span class="mr-4"><input type="radio"> Web</span>
-          <span class="mr-4"><input type="radio"> Mobile</span>
-          <span><input type="radio"> Outro</span>
+          <span class="mr-4">
+            <input type="radio" value="web" v-model="produto"> 
+            Web
+          </span>
+          <span class="mr-4">
+            <input type="radio" value="mobile" v-model="produto"> 
+            Mobile
+          </span>
+          <span>
+            <input type="radio" value="outro" v-model="produto"> 
+            Outro
+          </span>
         </Rotulo>
         <Rotulo nome="Prioridade">
-          <select name="" id="">
-            <option></option>
+          <select name="" id="" v-model="prioridade">
+            <option v-for="prioridade in prioridades" 
+            :key="prioridade.codigo" :selected="prioridade.codigo === 3" :value="prioridade.codigo">
+              {{ prioridade.codigo }} - {{ prioridade.nome }}
+            </option>
           </select>
         </Rotulo>
         <Rotulo nome="Primeira Reclamação?">
@@ -61,13 +79,23 @@
           </span>
         </Rotulo>
         <Rotulo nome="Marque as Opções">
-          <span>???</span>
+          <span>
+            <ul>
+              <li v-for="(c, index) in caracteristicas" :key="index">
+                {{ c }}
+              </li>
+            </ul>
+          </span>
         </Rotulo>
         <Rotulo nome="Qual produto?">
-          <span>???</span>
+          <span>
+            {{ produto }}
+          </span>
         </Rotulo>
         <Rotulo nome="Prioridade">
-          <span>???</span>
+          <span>
+            {{ prioridade }} {{ tipoPrioridade }}
+          </span>
         </Rotulo>
         <Rotulo nome="Primeira Reclamação?">
           <span>???</span>
@@ -92,12 +120,32 @@ export default {
         idade: 25,
       },
       mensagem: '',
+      caracteristicas: [],
+      produto: 'web',
+      prioridade: 1,
+      prioridades: [
+        {
+          codigo: 1,
+          nome: 'Baixa',
+        },
+        {
+          codigo: 2,
+          nome: 'Moderada',
+        },
+        {
+          codigo: 3,
+          nome: 'Alta', 
+        },
+      ],
     }
   },
   computed: {
     tipoIdade() {
       return typeof this.usuario.idade;
-    }
+    },
+    tipoPrioridade() {
+      return typeof this.prioridade;
+    },
   }
 }
 </script>
