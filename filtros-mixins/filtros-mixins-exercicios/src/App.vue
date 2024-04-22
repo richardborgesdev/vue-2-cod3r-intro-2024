@@ -5,11 +5,28 @@
     <p>
       {{ cpf | cpf | inverter }}
     </p>
+    <input type="text" name="" id="" :value="cpf | cpf | inverter">
+    <Frutas/>
+    <ul>
+      <li v-for="(fruta, index) in frutas" :key="index">
+        {{ fruta }}
+      </li>
+    </ul>
+    <input type="text" name="" id="" v-model="fruta" @keydown.enter="add">
   </div>
 </template>
 
 <script>
+import Frutas from './FrutasComp.vue';
+import frutasMixin from './frutasMixin';
+
 export default {
+  components: {
+    Frutas,
+  },
+  mixins: [
+    frutasMixin,
+  ],
   filters: {
     cpf(value) {
       const arr = value.split('');
@@ -24,7 +41,7 @@ export default {
     return {
       cpf: '60070080090',
     }
-  }
+  },
 }
 </script>
 
@@ -36,6 +53,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  font-size: 2.5rem;
+}
+
+input {
   font-size: 2.5rem;
 }
 </style>
