@@ -10,5 +10,8 @@ export default {
       this.frutas.push(this.fruta);
       this.fruta = '';
     }
+  },
+  created() {
+    console.log('created - usuario mixin');
   }
 }
