@@ -42,6 +42,9 @@ export default {
       cpf: '60070080090',
     }
   },
+  created() {
+    console.log('created - app');
+  }
 }
 </script>
 
