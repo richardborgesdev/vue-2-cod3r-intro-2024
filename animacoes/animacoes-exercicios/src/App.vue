@@ -45,6 +45,23 @@
         {{ msg }}
       </b-alert>
     </transition>
+    <hr>
+    <button @click="exibirJS = !exibirJS">
+      Alternar
+    </button>
+    <transition
+      :css="false"
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+      @enter-cancelled="enterCancelled"
+      @before-leave="beforeLeave"
+      @leave="leave"
+      @after-leave="afterLeave"
+      @leave-cancelled="leaveCancelled"
+    >
+      <div class="caixa" v-if="exibirJS"></div>
+    </transition>
   </div>
 </template>
 
@@ -55,8 +72,64 @@ export default {
     return {
       msg: 'Uma mensagem de informação para o usuário',
       exibir: true,
+      exibirJS: true,
       tipoAnimacao: 'fade',
+      larguraBase: 0.
     }
+  },
+  methods: {
+    animar(el, done, negativo) {
+      let rodada = 1;
+      const temporizador = setInterval(() => {
+        const rodadaValue = rodada * 10;
+        const rodadeEval = negativo
+          ? -rodadaValue
+          : rodadaValue;
+        const novaLargura = this.larguraBase + rodadeEval;
+
+        el.style.width = `${novaLargura}px`;
+        rodada++;
+
+        if (rodada > 30) {
+          clearInterval(temporizador);
+          done();
+        }
+      }, 20);
+    },
+    beforeEnter(el) {
+      console.log('>>> beforeEnter');
+
+      this.larguraBase = 0;
+      el.style.width = `${this.larguraBase}px`;
+    },
+    enter(el, done) {
+      console.log('>>> enter');
+
+      this.animar(el, done, false);
+    },
+    afterEnter(el) {
+      console.log('>>> afterEnter');
+    },
+    enterCancelled(el) {
+      console.log('>>> enterCancelled');
+    },
+    beforeLeave(el) {
+      console.log('>>> beforeLeave');
+
+      this.larguraBase = 300;
+      el.style.width = `${this.larguraBase}px`;
+    },
+    leave(el, done) {
+      console.log('>>> leave');
+
+      this.animar(el, done, true);
+    },
+    afterLeave(el) {
+      console.log('>>> afterLeave');
+    },
+    leaveCancelled(el) {
+      console.log('>>> leaveCancelled');
+    },
   }
 }
 </script>
@@ -70,6 +143,13 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   font-size: 1.5rem;
+}
+
+.caixa {
+  height: 100px;
+  width: 300px;
+  margin: 30px auto;
+  background-color: lightgreen;
 }
 
 .fade-enter, .fade-leave-to { 
