@@ -1,12 +1,22 @@
 <template>
-    <div class="result">
-        
+    <div class="result" :class="{ wrong: !result }">
+        <span>
+          Resposta Certa!
+        </span>
+        <span>
+          Resposta Errada!
+        </span>
     </div>
 </template>
 
 <script>
 export default {
-    
+    props: {
+      result: {
+        type: Boolean,
+        required: true,
+      }
+    }
 }
 </script>
 

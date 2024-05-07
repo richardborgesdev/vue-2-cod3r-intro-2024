@@ -1,12 +1,29 @@
 <template>
     <div class="question">
-        
+        <span>
+          {{ question.text }}
+        </span>
+        <ul class="answers">
+          <li v-for="(answer, index) in question.answers" :key="answer.text">
+            <span class="number">
+              {{ index + 1 }}
+            </span>
+            <span class="text">
+              {{ answer.text }}
+            </span>
+          </li>
+        </ul>
     </div>
 </template>
 
 <script>
 export default {
-    
+    props: {
+      question: {
+        type: Object,
+        required: true,
+      }
+    }
 }
 </script>
 
