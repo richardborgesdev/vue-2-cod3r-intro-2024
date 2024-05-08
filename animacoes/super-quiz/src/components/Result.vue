@@ -6,6 +6,10 @@
         <span>
           Resposta Errada!
         </span>
+        <hr>
+        <button @click="$emit('confirmed')">
+          Próxima pergunta
+        </button>
     </div>
 </template>
 
