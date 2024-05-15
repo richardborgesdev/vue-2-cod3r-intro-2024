@@ -30,6 +30,12 @@
         </strong>
         {{ id }}
         <br>
+        <b-button variant="warning" size="lg" @click="carregar(id)">
+          Carregar
+        </b-button>
+        <b-button variant="danger" size="lg" @click="excluir(id)">
+          Excluir
+        </b-button>
       </b-list-item>
     </b-list-group>
   </div>
@@ -40,6 +46,7 @@ export default {
   data() {
     return {
       usuarios: [],
+      id: null,
       usuario: {
         nome: '',
         email: '',
@@ -57,13 +64,29 @@ export default {
   //   .then(res => console.log(res));
   // }
   methods: {
-    salvar() {
-      console.log(this.usuario);
+    limpar() {
+      this.usuario.name = '';
+      this.usuario.email = '';
+      this.id = null;
+    },
+    carregar(id) {
+      this.id = id;
+      this.usuario = { ...this.usuarios[id] };
+    },
+    excluir() {
       this.$http
-        .post('usuarios.json', this.usuario)
-        .then(resp => {
-          this.usuario.name = '';
-          this.usuario.email = '';
+        .delete(`/usuarios/${id}.json`)
+        .then(() => this.limpar());
+    },
+    salvar() {
+      const method = this.id ? 'patch' : 'post';
+      const finalUrl = this.id ? `${this.id}.json` : `.json`;
+
+      console.log(this.usuario);
+      this
+        .$http[method](`${finalUrl}/usuarios.json`, this.usuario)
+        .then(() => {
+          this.limpar();
         });
     },
     obterUsuarios() {
