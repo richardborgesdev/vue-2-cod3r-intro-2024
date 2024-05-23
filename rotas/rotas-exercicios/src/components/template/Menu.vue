@@ -6,9 +6,14 @@
           Início
         </a>
       </router-link>
-      <router-link to="usuario/10" tag="li" active-class="active">
+      <router-link to="/usuario/1" tag="li" active-class="active">
         <a href="">
-          Usuário
+          Usuário 1
+        </a>
+      </router-link>
+      <router-link to="/usuario/2" tag="li" active-class="active">
+        <a href="">
+          Usuário 2
         </a>
       </router-link>
     </ul>
