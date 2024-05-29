@@ -17,6 +17,7 @@
         name: 'editarUsuario', 
         params: { id },
         query: { completo: true, lingua: 'pt'},
+        hash: '#rodape',
       }"
     >
       Editar

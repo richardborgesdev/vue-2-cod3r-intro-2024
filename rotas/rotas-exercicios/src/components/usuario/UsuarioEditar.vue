@@ -21,6 +21,11 @@
       </strong>
       {{ $route.query.lingua }}
     </p>
+    <div class="rodape">
+      <h3>
+
+      </h3>
+    </div>
   </div>
 </template>
 
@@ -29,3 +34,9 @@ export default {
   props: ['id'],
 }
 </script>
+
+<style>
+#rodape {
+  margin-top: 1000px;
+}
+</style>
