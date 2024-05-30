@@ -9,7 +9,22 @@ import Menu from './components/template/Menu.vue';
 
 Vue.use(Router);
 
-export default new Router({
+const router =  new Router({
+  mode: 'history',
+  scrollBehavior(to, from, savedPosition) {
+    
+    if (savedPosition) {
+      return savedPosition;
+    }
+    
+    if (to.hash) {
+      return {
+        selector: to.hash,
+      };
+    }
+
+    return { x: 0, y: 0 };
+  },
   routes: [
     {
       path: '/',
@@ -33,6 +48,10 @@ export default new Router({
           path: ':id', 
           component: UsuarioDetalhe, 
           props: true,
+          beforeEnter: (to, from, next) => {
+            console.log('before detalhe route');
+            next();
+          },
         },
         {
           path: ':id/editar', 
@@ -52,3 +71,10 @@ export default new Router({
     },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  console.log('before route');
+  next();
+});
+
+export default router;

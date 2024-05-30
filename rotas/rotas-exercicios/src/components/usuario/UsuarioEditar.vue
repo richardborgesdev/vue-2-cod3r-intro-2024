@@ -21,9 +21,12 @@
       </strong>
       {{ $route.query.lingua }}
     </p>
-    <div class="rodape">
+    <button primario>
+      Confirmar
+    </button>
+    <div id="rodape">
       <h3>
-
+        Rodapé
       </h3>
     </div>
   </div>
