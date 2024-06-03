@@ -1,13 +1,14 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Inicio from './components/InicioPage.vue';
-import Usuario from './components/usuario/UsuarioPage.vue';
-import UsuarioLista from './components/usuario/UsuarioLista.vue';
-import UsuarioEditar from './components/usuario/UsuarioEditar.vue';
-import UsuarioDetalhe from './components/usuario/UsuarioDetalhe.vue';
 import Menu from './components/template/Menu.vue';
 
 Vue.use(Router);
+
+const Usuario = () => import(/* webpackChunkName: "usuario" */ './components/usuario/UsuarioPage.vue');
+const UsuarioLista = () => import(/* webpackChunkName: "usuario" */ './components/usuario/UsuarioLista.vue');
+const UsuarioEditar = () => import(/* webpackChunkName: "usuario" */ './components/usuario/UsuarioEditar.vue');
+const UsuarioDetalhe = () => import(/* webpackChunkName: "usuario" */ './components/usuario/UsuarioDetalhe.vue');
 
 const router =  new Router({
   mode: 'history',

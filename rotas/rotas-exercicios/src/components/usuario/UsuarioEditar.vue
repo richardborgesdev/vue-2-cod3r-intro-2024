@@ -21,7 +21,7 @@
       </strong>
       {{ $route.query.lingua }}
     </p>
-    <button primario>
+    <button primario @click="confirmou = true">
       Confirmar
     </button>
     <div id="rodape">
@@ -35,6 +35,23 @@
 <script>
 export default {
   props: ['id'],
+  data() {
+    return {
+      confirmou: false,
+    };
+  },
+  beforeRouteLeave(to, from, next) {
+    console.log('>>> beforeRouteLeave');
+    if (this.confirmou) {
+      next();
+    } else {
+      if (confirm('Tem certeza?')) {
+          next();
+      } else {
+        next(false);
+      }
+    }
+  }
 }
 </script>
 
