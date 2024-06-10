@@ -21,7 +21,7 @@ export default {
   computed: {
     quantidade: {
       get() {
-        return this.$store.state.quantidade;
+        return this.$store.state.parametros.quantidade;
       },
       set(value) {
         this.$store.commit('setQuantidade', value);
@@ -29,7 +29,7 @@ export default {
     },
     preco: {
       get() {
-        return this.$store.state.preco;
+        return this.$store.state.parametros.preco;
       },
       set(value) {
         this.$store.commit('setPreco', value);

@@ -21,16 +21,19 @@ export default {
   },
   computed: {
     quantidade() {
-      return this.$store.state.quantidade;
+      return this.$store.state.parametros.quantidade;
     },
     preco() {
-      return this.$store.state.preco;
+      return this.$store.state.parametros.preco;
     },
   },
   methods: {
-    ...mapActions([
-      'adicionarProduto',
-    ]),
+    ...mapActions(
+      // 'carrinho', // it is on root
+      [
+        'adicionarProduto',
+      ],
+    ),
     adicionar() {
       const produto = {
         id: this.sequencia,
@@ -44,6 +47,9 @@ export default {
       // this.$store.commit('adicionarProduto', produto);
       // this.$store.dispatch('adicionarProduto', produto);
       this.adicionarProduto(produto);
+
+      console.log(this.$store.getters.getNome);
+      console.log(this.$store.getters.getNomeCompleto);
     }
   }
 }
