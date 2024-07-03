@@ -11,3 +11,18 @@
     1. index and error document are index.html
 1. DNS
     1. associate aws url with your dns
+1. Certificado SSL
+    1. aws > certified manager
+    1. provision certificate
+    1. create a public certificate
+    1. fill with you public domain
+    1. dns validation
+    1. add aws entry in your url domain manager > CNAME
+1. CloudFront
+    1. create distribution
+    1. web distribution
+    1. alternative domain names > CNAME
+    1. ssl certificate
+    1. default root object > index.html
+    1. **bucket name should have the same name as the public url**
+    1. associate cloudfront register with you domain register manager
